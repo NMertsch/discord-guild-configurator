@@ -80,3 +80,4 @@ This project uses the following tools:
 * [ruff](https://docs.astral.sh/ruff/) for Python code linting and formatting
 * [ty](https://docs.astral.sh/ty/) for Python type checking
 * [pre-commit](https://pre-commit.com) for running code checks on each commit and in CI
+* [GitHub Actions](https://docs.github.com/en/actions) for continuous integration
