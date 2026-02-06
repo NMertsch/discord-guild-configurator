@@ -1,0 +1,64 @@
+[project]
+name = "discord-guild-configurator"
+version = "0.1.0"
+description = "Discord guild configuration manager"
+readme = "README.md"
+authors = [
+    { name = "Niklas Mertsch", email = "niklasmertsch@web.de" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "discord>=2.3.2",
+    "pydantic>=2.12.5",
+]
+
+[project.scripts]
+discord-guild-configurator = "discord_guild_configurator.main:main"
+
+[build-system]
+requires = ["uv_build>=0.10.0,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "pre-commit-uv>=4.2.0",
+    "ruff>=0.15.0",
+    "ty>=0.0.15",
+]
+
+[tool.ty.rules]
+all = "error"
+
+[tool.ruff]
+line-length = 100
+unsafe-fixes = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # incompatible with `ruff format`
+    "COM812",
+    # (f-)string in exception
+    "EM101",
+    "EM102",
+    "TRY003",
+    # missing docstrings
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D107",
+]
+fixable = [
+    # type checking, annotations
+    "TC",
+    "ANN",
+    # imports
+    "F401",
+    "I001",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
