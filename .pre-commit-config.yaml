@@ -12,10 +12,7 @@ repos:
     rev: v0.15.0
     hooks:
       - id: ruff-check
-        # fix imports:
-        # - I001: Bad import order or format
-        # - F401: Unused import
-        args: [ '--fix', '--fixable', 'I001,F401' ]
+        args: [ '--fix' ]
       - id: ruff-format
 
   - repo: https://github.com/astral-sh/uv-pre-commit

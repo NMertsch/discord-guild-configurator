@@ -52,12 +52,17 @@ ignore = [
     "D107",
 ]
 fixable = [
-    # type checking, annotations
-    "TC",
-    "ANN",
-    # imports
-    "F401",
-    "I001",
+    "TC",  # type checking
+    "ANN",  # type annotations
+    "F401",  # unused imports
+    "I001",  # unsorted imports
+    "UP",  # pyupgrade
+    "PLR1730",  # if min/max over if else
+    "RET505",  # superfluous else-return
+    "PLR5501",  # collapse else-if into elif
+    "F541",  # superfluous f-string prefix
+    "F841",  # unused variable
+    "B007",  # unused loop variable
 ]
 
 [tool.ruff.lint.pydocstyle]
