@@ -79,5 +79,5 @@ This project uses the following tools:
 * [uv](https://docs.astral.sh/uv/) for Python project and dependency management
 * [ruff](https://docs.astral.sh/ruff/) for Python code linting and formatting
 * [ty](https://docs.astral.sh/ty/) for Python type checking
-* [pre-commit](https://pre-commit.com) for running code checks on each commit and in CI
+* [prek](https://prek.j178.dev/) for running code checks on each commit and in CI
 * [GitHub Actions](https://docs.github.com/en/actions) for continuous integration
