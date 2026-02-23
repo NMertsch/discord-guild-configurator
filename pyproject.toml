@@ -64,5 +64,11 @@ fixable = [
     "B007",  # unused loop variable
 ]
 
+[tool.ruff.lint.per-file-ignores]
+"scripts/*" = [
+    "INP001",  # no `__init__.py`
+    "T201",  # print
+]
+
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
