@@ -4,7 +4,9 @@ import re
 import textwrap
 from typing import Annotated, Literal, Self
 
-from pydantic import AfterValidator, BaseModel, Field, model_validator
+from pydantic import AfterValidator, Field, model_validator
+
+from discord_guild_configurator._utils import StrictBaseModel
 
 MultilineString = Annotated[
     str,
@@ -71,13 +73,13 @@ Permission = Literal[
 ]
 
 
-class PermissionOverwrite(BaseModel):
+class PermissionOverwrite(StrictBaseModel):
     roles: list[str]
     allow: list[Permission] = Field(default_factory=list)
     deny: list[Permission] = Field(default_factory=list)
 
 
-class ForumChannel(BaseModel):
+class ForumChannel(StrictBaseModel):
     type: Literal["forum"] = "forum"
 
     name: str
@@ -88,7 +90,7 @@ class ForumChannel(BaseModel):
     require_tag: bool = False
 
 
-class TextChannel(BaseModel):
+class TextChannel(StrictBaseModel):
     type: Literal["text"] = "text"
 
     name: str
@@ -98,14 +100,14 @@ class TextChannel(BaseModel):
     channel_messages: list[MultilineString] = Field(default_factory=list)
 
 
-class VoiceChannel(BaseModel):
+class VoiceChannel(StrictBaseModel):
     type: Literal["voice"] = "voice"
 
     name: str
     permission_overwrites: list[PermissionOverwrite] = Field(default_factory=list)
 
 
-class Category(BaseModel):
+class Category(StrictBaseModel):
     name: str
     channels: list[
         Annotated[TextChannel | ForumChannel | VoiceChannel, Field(discriminator="type")]
@@ -113,7 +115,7 @@ class Category(BaseModel):
     permission_overwrites: list[PermissionOverwrite] = Field(default_factory=list)
 
 
-class Role(BaseModel):
+class Role(StrictBaseModel):
     name: str
     color: str = Field(pattern=re.compile("^#[0-9A-F]{6}$"))
     hoist: bool = False
@@ -121,7 +123,7 @@ class Role(BaseModel):
     permissions: list[Permission] = Field(default_factory=list)
 
 
-class GuildConfig(BaseModel):
+class GuildConfig(StrictBaseModel):
     roles: list[Role]
     rules_channel_name: str
     system_channel_name: str
