@@ -5,9 +5,15 @@ import asyncio
 import logging
 import os
 import sys
+from pathlib import Path
+from typing import TYPE_CHECKING
 
 from discord_guild_configurator.bot import GuildConfigurationBot, run_bot
-from discord_guild_configurator.configs.ep2025_config import SERVER_CONFIG
+from discord_guild_configurator.configurator import GuildConfigurator
+from discord_guild_configurator.models import GuildConfig
+
+if TYPE_CHECKING:
+    import discord
 
 DESCRIPTION = """\
 Configure a Discord guild.
@@ -68,6 +74,12 @@ def main() -> None:
         formatter_class=argparse.RawTextHelpFormatter,
     )
     parser.add_argument("--guild-id", type=int, required=True, help="ID of the guild to configure")
+    parser.add_argument(
+        "--config-file",
+        type=Path,
+        required=True,
+        help="Path to the guild configuration file (JSON)",
+    )
     parser.add_argument("--verbose", action="store_true", help="Enable INFO logging")
     parser.add_argument("--debug", action="store_true", help="Enable DEBUG logging")
     args = parser.parse_args()
@@ -78,7 +90,13 @@ def main() -> None:
 
     configure_logging(debug=args.debug, verbose=args.verbose)
 
-    bot = GuildConfigurationBot(args.guild_id, SERVER_CONFIG)
+    guild_config = GuildConfig.model_validate_json(args.config_file.read_text(encoding="UTF-8"))
+
+    async def configure_guild(guild: discord.Guild) -> None:
+        configurator = GuildConfigurator(guild)
+        await configurator.apply_configuration(guild_config)
+
+    bot = GuildConfigurationBot(args.guild_id, configure_guild)
     asyncio.run(run_bot(bot, bot_token))
 
 

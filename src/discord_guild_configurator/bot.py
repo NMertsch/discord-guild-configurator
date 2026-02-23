@@ -1,33 +1,35 @@
 from __future__ import annotations
 
+import logging
 import sys
 from typing import TYPE_CHECKING, Any, Final
 
 import discord
+from discord import Guild
 from discord.ext.commands import Bot
 
-from discord_guild_configurator.configurator import GuildConfigurator, logger
-
 if TYPE_CHECKING:
-    from discord_guild_configurator.models import GuildConfig
+    from collections.abc import Awaitable, Callable
 
+
+logger = logging.getLogger(__name__)
 
 class GuildConfigurationBot(Bot):
-    def __init__(self, guild_id: int, guild_template: GuildConfig) -> None:
+    def __init__(self, guild_id: int, action: Callable[[Guild], Awaitable[None]]) -> None:
         """Discord bot which exports all guild members to .csv files and then stops itself."""
         intents = discord.Intents.all()
         intents.presences = False
         super().__init__(intents=intents, command_prefix="$")
 
         self.guild_id: Final[int] = guild_id
-        self.guild_template: Final[GuildConfig] = guild_template
+        self.action: Final[Callable[[Guild], Awaitable[None]]] = action
 
     async def on_ready(self) -> None:
         """Event handler for successful connection."""
         guild = self.get_guild(self.guild_id)
         if guild is None:
             raise RuntimeError(f"Could not find guild with ID {self.guild_id}")
-        await GuildConfigurator(guild).apply_configuration(self.guild_template)
+        await self.action(guild)
 
         await self.close()
 
