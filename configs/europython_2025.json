@@ -1,0 +1,926 @@
+{
+  "roles": [
+    {
+      "name": "Code of Conduct Committee",
+      "color": "#E6412C",
+      "hoist": true,
+      "mentionable": true,
+      "permissions": [
+        "kick_members",
+        "ban_members",
+        "priority_speaker",
+        "deafen_members",
+        "mute_members"
+      ]
+    },
+    {
+      "name": "Moderators",
+      "color": "#E85D04",
+      "hoist": true,
+      "mentionable": true,
+      "permissions": [
+        "manage_nicknames",
+        "moderate_members",
+        "manage_messages",
+        "manage_threads",
+        "priority_speaker",
+        "deafen_members",
+        "mute_members"
+      ]
+    },
+    {
+      "name": "Organizers",
+      "color": "#BC8C15",
+      "hoist": false,
+      "mentionable": false,
+      "permissions": [
+        "mention_everyone",
+        "use_external_apps",
+        "manage_roles"
+      ]
+    },
+    {
+      "name": "Volunteers",
+      "color": "#FFD700",
+      "hoist": true,
+      "mentionable": true,
+      "permissions": []
+    },
+    {
+      "name": "Onsite Volunteers",
+      "color": "#99AAB5",
+      "hoist": false,
+      "mentionable": false,
+      "permissions": []
+    },
+    {
+      "name": "Remote Volunteers",
+      "color": "#99AAB5",
+      "hoist": false,
+      "mentionable": false,
+      "permissions": []
+    },
+    {
+      "name": "Speakers",
+      "color": "#0096C7",
+      "hoist": true,
+      "mentionable": true,
+      "permissions": []
+    },
+    {
+      "name": "Sponsors",
+      "color": "#8FD3E0",
+      "hoist": true,
+      "mentionable": true,
+      "permissions": []
+    },
+    {
+      "name": "Participants",
+      "color": "#D34EA5",
+      "hoist": true,
+      "mentionable": true,
+      "permissions": [
+        "use_external_emojis",
+        "use_external_stickers",
+        "create_polls"
+      ]
+    },
+    {
+      "name": "Onsite Participants",
+      "color": "#99AAB5",
+      "hoist": false,
+      "mentionable": false,
+      "permissions": []
+    },
+    {
+      "name": "Remote Participants",
+      "color": "#99AAB5",
+      "hoist": false,
+      "mentionable": false,
+      "permissions": []
+    },
+    {
+      "name": "Beginners Day",
+      "color": "#658B34",
+      "hoist": false,
+      "mentionable": true,
+      "permissions": [
+        "use_external_emojis",
+        "use_external_stickers",
+        "create_polls"
+      ]
+    },
+    {
+      "name": "Programme Team",
+      "color": "#99AAB5",
+      "hoist": false,
+      "mentionable": true,
+      "permissions": []
+    },
+    {
+      "name": "@everyone",
+      "color": "#99AAB5",
+      "hoist": false,
+      "mentionable": false,
+      "permissions": [
+        "view_channel",
+        "change_nickname",
+        "send_messages",
+        "send_messages_in_threads",
+        "create_public_threads",
+        "embed_links",
+        "attach_files",
+        "add_reactions",
+        "read_message_history",
+        "use_application_commands",
+        "connect",
+        "speak",
+        "use_voice_activation"
+      ]
+    }
+  ],
+  "rules_channel_name": "rules",
+  "system_channel_name": "system-events",
+  "updates_channel_name": "discord-updates",
+  "categories": [
+    {
+      "name": "Information",
+      "channels": [
+        {
+          "type": "text",
+          "name": "rules",
+          "topic": "Please read the rules carefully!",
+          "permission_overwrites": [],
+          "channel_messages": [
+            "## Community Rules\n\n**Rule 1**\nFollow the [EuroPython Society Code of Conduct](https://www.europython-society.org/coc/).\n**Rule 2**\nUse English to the best of your ability. Be polite if someone speaks English imperfectly.\n**Rule 3**\nUse the name on your ticket as your display name. This will be done automatically during the #registration-form process.\n**Rule 4**\nWhen posting pictures, please keep visually impaired attendees in mind. A short description can make a big difference.\nSee also: [Discord - Add Alt Text To Your Image Upload](https://support.discord.com/hc/en-us/articles/211866427-How-do-I-upload-images-and-GIFs#h_01GWWTHYJEV2S1WCDGFEMY21AQ)\n\n**Reporting Incidents**\nIf you notice something that needs the attention of a moderator of the community, please ping the <<@&Moderators>> role.\n\nNote that not all moderators are a member of the EuroPython Code of Conduct team. See the <<#code-of-conduct>> channel to read how you can report Code of Conduct incidents."
+          ]
+        },
+        {
+          "type": "text",
+          "name": "code-of-conduct",
+          "topic": "https://www.europython-society.org/coc/",
+          "permission_overwrites": [],
+          "channel_messages": [
+            "## EuroPython Society Code of Conduct\nEuroPython is a community conference intended for networking and collaboration in the developer community.\n\nWe value the participation of each member of the Python community and want all participants to have an enjoyable and fulfilling experience. Accordingly, all attendees are expected to show respect and courtesy to other attendees throughout the conference and at all conference events.\n\nTo make clear what is expected, all staff, attendees, speakers, exhibitors, organisers, and volunteers at any EuroPython event are required to conform to the [Code of Conduct](https://www.europython-society.org/coc/), as set forth by the [EuroPython Society](https://www.europython-society.org/about/). Organisers will enforce this code throughout the event.\n\n**Please read the Code of Conduct:** https://www.europython-society.org/coc/",
+            "## Reporting Incidents\n**If you believe someone is in physical danger, including from themselves**, the most important thing is to get that person help. Please contact the appropriate crisis number, non-emergency number, or police number. If you are a EuroPython attendee, you can consult with a volunteer or organiser to help find an appropriate number.\n\nIf you believe a [Code of Conduct](https://www.europython-society.org/coc/) incident has occurred, we encourage you to report it. If you are unsure whether the incident is a violation, or whether the space where it happened is covered by the Code of Conduct, we encourage you to still report it. We are fine with receiving reports where we decide to take no action for the sake of creating a safer space.",
+            "## General Reporting Procedure\nIf you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of the Code of Conduct committee immediately:\n- Email: [coc@europython.eu](mailto:coc@europython.eu)\n- Discord role: <<@&Code of Conduct Committee>>\n- Individual contact information: [EPS Website](https://www.europython-society.org/coc/#contact-information)",
+            "## Links\n- [EuroPython Society Code of Conduct](https://www.europython-society.org/coc/)\n- [Incident Reporting Procedure](https://www.europython-society.org/coc-incident-reporting/)\n- [Procedure for Incident Response](https://www.europython-society.org/coc-enforcement-procedure/)"
+          ]
+        },
+        {
+          "type": "forum",
+          "name": "job-board",
+          "topic": "Make sure your job openings follows the following rules:\n\n1. Title: A clear and concise title including the role and the Company/Organization\n2. Job Type: Indicate whether the job is full-time, part-time, contract-based, freelance, or an internship.\n3. Job Description: Provide a URL or text explaining the job.\n4. Application Deadline: If there is a specific deadline for applications, mention it in the post.\n5. Salary/Compensation: If possible and appropriate, include salary or compensation details.\n6. Additional Information: stuff like:  perks, or notable company culture, include them in the post.\n7. Relevant Tags: Use relevant tags or keywords to categorize the job post. Please let us know if important tags are missing.\n8. No Discrimination: Ensure that the job post does not include any discriminatory language or requirements.\n9. Updates and Removal: If the job position is filled or no longer available, update or remove the post to avoid confusion for job seekers.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Sponsors",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "send_messages",
+                "create_public_threads"
+              ],
+              "deny": []
+            }
+          ],
+          "tags": [
+            "Remote",
+            "Hybrid",
+            "On-site",
+            "AI",
+            "Data Science",
+            "Data Engineering",
+            "Backend",
+            "Frontend",
+            "Full Stack",
+            "Cloud",
+            "Web",
+            "DevOps",
+            "Junior",
+            "Professional",
+            "Senior"
+          ],
+          "require_tag": true
+        }
+      ],
+      "permission_overwrites": [
+        {
+          "roles": [
+            "@everyone"
+          ],
+          "allow": [],
+          "deny": [
+            "send_messages",
+            "create_public_threads",
+            "add_reactions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EuroPython 2025",
+      "channels": [
+        {
+          "type": "text",
+          "name": "announcements",
+          "topic": "Organisers will make EuroPython announcements in this channel",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "@everyone"
+              ],
+              "allow": [],
+              "deny": [
+                "send_messages",
+                "create_public_threads"
+              ]
+            },
+            {
+              "roles": [
+                "Organizers"
+              ],
+              "allow": [
+                "send_messages"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "general-chat",
+          "topic": "Social chat for conference participants. Please follow the Rules and Code of Conduct.",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "forum",
+          "name": "support",
+          "topic": "Use this forum channel to create support tickets if you **need support from the conference organization**. Please don't open forum threads related to other topics, as that makes it difficult for the organizers to keep track of support tickets that need their attention.\n\nIf you to make a report to the Code of Conduct Committee, please use coc@europython.eu or contact an organizer at the conference.",
+          "permission_overwrites": [],
+          "tags": [
+            "Remote Support",
+            "On-Site Support"
+          ],
+          "require_tag": true
+        },
+        {
+          "type": "forum",
+          "name": "feedback",
+          "topic": "Please share your thoughts and ideas. What works well? What doesn't? How can we make EuroPython even better?",
+          "permission_overwrites": [],
+          "tags": [],
+          "require_tag": false
+        },
+        {
+          "type": "text",
+          "name": "introduction",
+          "topic": "Feel free to introduce yourself here :)",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "ask-the-locals",
+          "topic": "The right place to ask locals for help and experience.\nMany people recommended the YouTube channel 'HONEST GUIDE', maybe you find it helpful as well: https://www.youtube.com/@HONESTGUIDE",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "forum",
+          "name": "topics-and-interests",
+          "topic": "You can use this forum channel to start conversations focused around specific topics and interests, including topics unrelated to EuroPython or Python. Think of it like a virtual hallway track where you can discuss topics with the people you meet while participating in a conference.\n\n**Use a descriptive title** that clearly highlights the topic you intend to discuss within this channel. However, do **keep in mind that conversations tend to meander away from their initial topic over time**. While it's okay to nudge the conversation back onto its original topic, do **be patient and civil** with each other, even if you perceive someone as going \"off-topic\".\n\nThank you for your cooperation in maintaining an open and welcoming environment for everyone!",
+          "permission_overwrites": [],
+          "tags": [],
+          "require_tag": false
+        },
+        {
+          "type": "forum",
+          "name": "social-activities",
+          "topic": "# Social Activities organized by and for attendees\nYou can use this channel to organize a social activity with other attendees of the conference. Do note that EuroPython only provides a space for attendees to coordinate social activities, it does not officially endorse activities posted here.\n\n## topic for a good post\n- Use a **descriptive title** that captures the core of your activity\n- If relevant, **include the date and time in your title**\n- Indicate if your activity is **in-person** or **remote** by selecting the appropriate tag",
+          "permission_overwrites": [],
+          "tags": [
+            "In Person",
+            "Remote"
+          ],
+          "require_tag": true
+        },
+        {
+          "type": "text",
+          "name": "lost-and-found",
+          "topic": "Channel for the coordination of lost and found items. Please bring found items to the registration desk.",
+          "permission_overwrites": [],
+          "channel_messages": []
+        }
+      ],
+      "permission_overwrites": [
+        {
+          "roles": [
+            "@everyone"
+          ],
+          "allow": [],
+          "deny": [
+            "view_channel"
+          ]
+        },
+        {
+          "roles": [
+            "Participants",
+            "Sponsors",
+            "Speakers",
+            "Volunteers",
+            "Organizers",
+            "Moderators",
+            "Code of Conduct Committee",
+            "Beginners Day"
+          ],
+          "allow": [
+            "view_channel"
+          ],
+          "deny": []
+        }
+      ]
+    },
+    {
+      "name": "Remote Attendees",
+      "channels": [
+        {
+          "type": "text",
+          "name": "remote-text",
+          "topic": "Text chat for remote attendees",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "voice",
+          "name": "remote-voice",
+          "permission_overwrites": []
+        }
+      ],
+      "permission_overwrites": [
+        {
+          "roles": [
+            "@everyone"
+          ],
+          "allow": [],
+          "deny": [
+            "view_channel"
+          ]
+        },
+        {
+          "roles": [
+            "Participants",
+            "Sponsors",
+            "Speakers",
+            "Volunteers",
+            "Organizers",
+            "Moderators",
+            "Code of Conduct Committee",
+            "Beginners Day"
+          ],
+          "allow": [
+            "view_channel"
+          ],
+          "deny": []
+        }
+      ]
+    },
+    {
+      "name": "Sponsors",
+      "channels": [],
+      "permission_overwrites": [
+        {
+          "roles": [
+            "@everyone"
+          ],
+          "allow": [],
+          "deny": [
+            "view_channel"
+          ]
+        },
+        {
+          "roles": [
+            "Participants",
+            "Sponsors",
+            "Speakers",
+            "Volunteers",
+            "Organizers",
+            "Moderators",
+            "Code of Conduct Committee",
+            "Beginners Day"
+          ],
+          "allow": [
+            "view_channel"
+          ],
+          "deny": []
+        }
+      ]
+    },
+    {
+      "name": "Rooms",
+      "channels": [
+        {
+          "type": "text",
+          "name": "programme-notifications",
+          "topic": "Find the latest information about starting sessions here!",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "@everyone"
+              ],
+              "allow": [],
+              "deny": [
+                "send_messages"
+              ]
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "forum-hall",
+          "topic": "Livestream: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "south-hall-2a",
+          "topic": "Livestream: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "south-hall-2b",
+          "topic": "Livestream: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "north-hall",
+          "topic": "Livestream: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "terrace-2a",
+          "topic": "Livestream: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "terrace-2b",
+          "topic": "Livestream: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "exhibit-hall",
+          "topic": "For conversations related to the exhibit hall.",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "open-spaces",
+          "topic": "For conversations related to the open spaces. Schedule and booking: [TBA]",
+          "permission_overwrites": [],
+          "channel_messages": []
+        },
+        {
+          "type": "forum",
+          "name": "tutorials",
+          "topic": "We kindly ask you to **only create one thread per tutorial**. Having too many threads makes it more difficult for participants to find the thread of the tutorial they're participating in.\n\n**Tips:**\n- On desktop, you can open a forum thread in \"full window mode\" using the `...` option menu in the top bar.\n- If you select to \"follow\" a thread, it will appear directly in your channel list.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Participants",
+                "Sponsors",
+                "Speakers",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Beginners Day"
+              ],
+              "allow": [],
+              "deny": [
+                "create_public_threads"
+              ]
+            },
+            {
+              "roles": [
+                "Speakers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "create_public_threads"
+              ],
+              "deny": []
+            }
+          ],
+          "tags": [],
+          "require_tag": false
+        },
+        {
+          "type": "forum",
+          "name": "sprints",
+          "topic": "To keep things manageable, one post/thread per sprint would be the best.If there are reasons to create multiple threads/posts (e.g., for groups working on a sub-project), that should be fine, too.",
+          "permission_overwrites": [],
+          "tags": [],
+          "require_tag": false
+        },
+        {
+          "type": "forum",
+          "name": "beginners-day",
+          "topic": "Channel for the Beginners' Day: https://ep2025.europython.eu/beginners-day/",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Beginners Day"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "tags": [],
+          "require_tag": false
+        },
+        {
+          "type": "forum",
+          "name": "slides-and-artefacts",
+          "topic": "You can create a thread for your talk where you can add slides and other artefacts.\n\n- Please add the **title of your talk **and the **names of the speakers** in the title. This makes it easy for participants to find your talk.\n- Only create a single post per talk!\n- Participants can't send messages in the thread.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Participants",
+                "Sponsors",
+                "Speakers",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Beginners Day"
+              ],
+              "allow": [],
+              "deny": [
+                "create_public_threads"
+              ]
+            },
+            {
+              "roles": [
+                "Speakers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "create_public_threads"
+              ],
+              "deny": []
+            }
+          ],
+          "tags": [],
+          "require_tag": false
+        }
+      ],
+      "permission_overwrites": [
+        {
+          "roles": [
+            "@everyone"
+          ],
+          "allow": [],
+          "deny": [
+            "view_channel"
+          ]
+        },
+        {
+          "roles": [
+            "Participants",
+            "Sponsors",
+            "Speakers",
+            "Volunteers",
+            "Organizers",
+            "Moderators",
+            "Code of Conduct Committee",
+            "Beginners Day"
+          ],
+          "allow": [
+            "view_channel"
+          ],
+          "deny": []
+        }
+      ]
+    },
+    {
+      "name": "Conference Organization",
+      "channels": [
+        {
+          "type": "text",
+          "name": "announcements-volunteers",
+          "topic": "Announcements and requests for conference volunteers. Please use <<#volunteers-lounge>> for all other volunteer-related conversations.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "volunteers-lounge",
+          "topic": "Social chat for volunteers. Please follow the #rules and #code-of-conduct!",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "sponsors-lounge",
+          "topic": "Social chat for sponsors. Please follow the #rules and #code-of-conduct!",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Sponsors",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "speakers-lounge",
+          "topic": "Channel open to all speakers & conference volunteers. Please follow the #rules and #code-of-conduct!",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Speakers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "moderators",
+          "topic": "For discussions related to ongoing moderation activities, moderation policy, and other moderation-related topic.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "discord-updates",
+          "topic": "Discord will send community server notifications here.",
+          "permission_overwrites": [],
+          "channel_messages": []
+        }
+      ],
+      "permission_overwrites": [
+        {
+          "roles": [
+            "@everyone"
+          ],
+          "allow": [],
+          "deny": [
+            "view_channel"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Registration",
+      "channels": [
+        {
+          "type": "text",
+          "name": "welcome",
+          "topic": "Welcome to our server, please register.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "@everyone"
+              ],
+              "allow": [],
+              "deny": [
+                "send_messages",
+                "create_public_threads"
+              ]
+            },
+            {
+              "roles": [
+                "Participants",
+                "Sponsors",
+                "Speakers",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Beginners Day"
+              ],
+              "allow": [],
+              "deny": [
+                "view_channel"
+              ]
+            },
+            {
+              "roles": [
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": [
+            "**Welcome to our Discord server! Please register using the <<#registration-form>>**\n\nIf you encounter any problems with registration, please ask in <<#registration-help>>."
+          ]
+        },
+        {
+          "type": "text",
+          "name": "registration-form",
+          "topic": "Please follow the registration instructions.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "@everyone"
+              ],
+              "allow": [],
+              "deny": [
+                "send_messages",
+                "create_public_threads"
+              ]
+            },
+            {
+              "roles": [
+                "Participants",
+                "Sponsors",
+                "Speakers",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Beginners Day"
+              ],
+              "allow": [],
+              "deny": [
+                "view_channel"
+              ]
+            },
+            {
+              "roles": [
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "forum",
+          "name": "registration-help",
+          "topic": "# This channel is only for asking for help with registration, not for general discussion.\n\nAs this community is only intended for EuroPython participants, there are no public discussion channels.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "Participants",
+                "Sponsors",
+                "Speakers",
+                "Volunteers",
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee",
+                "Beginners Day"
+              ],
+              "allow": [],
+              "deny": [
+                "view_channel"
+              ]
+            },
+            {
+              "roles": [
+                "Organizers",
+                "Moderators",
+                "Code of Conduct Committee"
+              ],
+              "allow": [
+                "view_channel"
+              ],
+              "deny": []
+            }
+          ],
+          "tags": [],
+          "require_tag": false
+        },
+        {
+          "type": "text",
+          "name": "registration-log",
+          "topic": "The EuroPython bot will log registration actions here to help us with debugging.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "@everyone"
+              ],
+              "allow": [],
+              "deny": [
+                "view_channel"
+              ]
+            }
+          ],
+          "channel_messages": []
+        },
+        {
+          "type": "text",
+          "name": "system-events",
+          "topic": "This channel will show \"raw\" joins to keep track of who joins and who registered without diving into the audit log.",
+          "permission_overwrites": [
+            {
+              "roles": [
+                "@everyone"
+              ],
+              "allow": [],
+              "deny": [
+                "view_channel"
+              ]
+            }
+          ],
+          "channel_messages": []
+        }
+      ],
+      "permission_overwrites": []
+    }
+  ]
+}
