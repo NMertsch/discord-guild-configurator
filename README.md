@@ -52,18 +52,33 @@ Create a Discord bot with the privileges for receiving `GUILD_MEMBER` events on 
 * Install this package, e.g., with `pip install .` or `uv sync`.
 * CLI: Run `discord-guild-configurator --guild-id <GUILD_ID>`. You can use `--verbose` or `--debug` to see more output.
 
-NOTE: This will apply the EuroPython 2025 configuration to the specified guild.
+NOTE: This will apply the [EuroPython 2025 configuration](./src/discord_guild_configurator/configs/ep2025_config.py)
+to the specified guild.
 See below for instructions on how to configure the guild with your own configuration.
 
 ### Programmatic usage
 
 ```python
-from discord_guild_configurator.bot import GuildConfigurationBot, run_bot
+# Option 1: Create guild configuration programmatically
 from discord_guild_configurator.models import GuildConfig
+
+GUILD_CONFIG = GuildConfig(...)
+
+# Option 2: Load guild configuration from a JSON file
+import json
+from pathlib import Path
+
+from discord_guild_configurator.models import GuildConfig
+
+config_file = Path("guild_config.json")
+config_file_content = config_file.read_text(encoding="UTF-8")
+GUILD_CONFIG = GuildConfig.model_validate_json(config_file_content)
+
+# Apply the configuration
+from discord_guild_configurator.bot import GuildConfigurationBot, run_bot
 
 BOT_TOKEN = "..."
 GUILD_ID = 123456789
-GUILD_CONFIG = GuildConfig(...)
 
 configurator = GuildConfigurationBot(GUILD_ID, GUILD_CONFIG)
 run_bot(configurator, BOT_TOKEN)
