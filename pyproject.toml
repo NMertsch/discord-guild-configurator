@@ -79,4 +79,7 @@ fixable = [
 convention = "pep257"
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
-"pydantic.BaseModel" = { msg = "Use the custom StrictBaseModel instead" }
+"pydantic.BaseModel" = { msg = "Use discord_build_configurator._utils.StrictBaseModel instead" }
+
+[tool.ruff.lint.flake8-type-checking]
+runtime-evaluated-base-classes = ["discord_guild_configurator._utils.StrictBaseModel"]
