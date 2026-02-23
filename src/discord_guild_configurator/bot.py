@@ -14,6 +14,7 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
+
 class GuildConfigurationBot(Bot):
     def __init__(self, guild_id: int, action: Callable[[Guild], Awaitable[None]]) -> None:
         """Discord bot which exports all guild members to .csv files and then stops itself."""

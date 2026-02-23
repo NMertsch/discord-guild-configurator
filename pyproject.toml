@@ -38,10 +38,11 @@ select = ["ALL"]
 ignore = [
     # incompatible with `ruff format`
     "COM812",
-    # (f-)string in exception
+    # (f-)string in exception and logging
     "EM101",
     "EM102",
     "TRY003",
+    "G004",
     # missing docstrings
     "D100",
     "D101",
