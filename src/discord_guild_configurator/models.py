@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import textwrap
 from typing import Annotated, Literal, Self
 
@@ -114,7 +115,7 @@ class Category(BaseModel):
 
 class Role(BaseModel):
     name: str
-    color: str = Field(pattern="#[0-9A-F]{6}")
+    color: str = Field(pattern=re.compile("^#[0-9A-F]{6}$"))
     hoist: bool = False
     mentionable: bool = False
     permissions: list[Permission] = Field(default_factory=list)
