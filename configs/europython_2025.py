@@ -41,7 +41,7 @@ ROLES_REGISTERED = [
     *ROLES_VOLUNTEERS,
     ROLE_BEGINNERS_DAY,
 ]
-SERVER_CONFIG = GuildConfig(
+CONFIG = GuildConfig(
     roles=[
         Role(
             name=ROLE_COC,

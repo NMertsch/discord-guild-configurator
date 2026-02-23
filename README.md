@@ -2,8 +2,7 @@
 
 This program configures a Discord guild based on a given configuration.
 
-See [ep2025_config.py](./src/discord_guild_configurator/configs/ep2025_config.py) for an example configuration.
-It is the configuration of the EuroPython 2025 conference server.
+See [configs](./configs) for an example configuration.
 
 ## Features
 

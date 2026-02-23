@@ -66,6 +66,9 @@ fixable = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
+"configs/*" = [
+    "INP001",  # no `__init__.py`
+]
 "scripts/*" = [
     "INP001",  # no `__init__.py`
     "T201",  # print
