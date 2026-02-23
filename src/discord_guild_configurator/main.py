@@ -67,6 +67,7 @@ def main() -> None:
         description=DESCRIPTION,
         formatter_class=argparse.RawTextHelpFormatter,
     )
+    parser.add_argument("--guild-id", type=int, required=True, help="ID of the guild to configure")
     parser.add_argument("--verbose", action="store_true", help="Enable INFO logging")
     parser.add_argument("--debug", action="store_true", help="Enable DEBUG logging")
     args = parser.parse_args()
@@ -77,7 +78,7 @@ def main() -> None:
 
     configure_logging(debug=args.debug, verbose=args.verbose)
 
-    bot = GuildConfigurationBot(SERVER_CONFIG)
+    bot = GuildConfigurationBot(args.guild_id, SERVER_CONFIG)
     asyncio.run(run_bot(bot, bot_token))
 
 

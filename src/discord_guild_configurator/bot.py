@@ -13,21 +13,21 @@ if TYPE_CHECKING:
 
 
 class GuildConfigurationBot(Bot):
-    def __init__(self, guild_template: GuildConfig) -> None:
+    def __init__(self, guild_id: int, guild_template: GuildConfig) -> None:
         """Discord bot which exports all guild members to .csv files and then stops itself."""
         intents = discord.Intents.all()
         intents.presences = False
-        super().__init__(
-            intents=intents,
-            command_prefix="$",
-        )
+        super().__init__(intents=intents, command_prefix="$")
 
+        self.guild_id: Final[int] = guild_id
         self.guild_template: Final[GuildConfig] = guild_template
 
     async def on_ready(self) -> None:
         """Event handler for successful connection."""
-        for guild in self.guilds:
-            await GuildConfigurator(guild).apply_configuration(self.guild_template)
+        guild = self.get_guild(self.guild_id)
+        if guild is None:
+            raise RuntimeError(f"Could not find guild with ID {self.guild_id}")
+        await GuildConfigurator(guild).apply_configuration(self.guild_template)
 
         await self.close()
 
