@@ -8,6 +8,7 @@ It is the configuration of the EuroPython 2025 conference server.
 ## Features
 
 Features:
+
 - Enable 'Community Server' features
 - Configure system channels
 - Update roles
@@ -26,6 +27,7 @@ Features:
 - Update channel's default messages
 
 Deliberate omissions:
+
 - Delete roles
 - Delete categories
 - Delete channels
@@ -90,8 +92,8 @@ run_bot(bot, BOT_TOKEN)
 
 This project uses the following tools:
 
-* [uv](https://docs.astral.sh/uv/) for Python project and dependency management
-* [ruff](https://docs.astral.sh/ruff/) for Python code linting and formatting
-* [ty](https://docs.astral.sh/ty/) for Python type checking
-* [prek](https://prek.j178.dev/) for running code checks on each commit and in CI
-* [GitHub Actions](https://docs.github.com/en/actions) for continuous integration
+- [uv](https://docs.astral.sh/uv/) for Python project and dependency management
+- [ruff](https://docs.astral.sh/ruff/) for Python code linting and formatting
+- [ty](https://docs.astral.sh/ty/) for Python type checking
+- [prek](https://prek.j178.dev/) for running code checks on each commit and in CI
+- [GitHub Actions](https://docs.github.com/en/actions) for continuous integration
