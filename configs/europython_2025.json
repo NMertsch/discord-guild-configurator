@@ -139,9 +139,15 @@
       ]
     }
   ],
-  "rules_channel_name": "rules",
-  "system_channel_name": "system-events",
-  "updates_channel_name": "discord-updates",
+  "system_channel": {
+    "name": "system-events",
+    "guild_reminder_notifications": false,
+    "join_notification_replies": false,
+    "join_notifications": true,
+    "premium_subscriptions": false,
+    "role_subscription_purchase_notification_replies": false,
+    "role_subscription_purchase_notifications": false
+  },
   "categories": [
     {
       "name": "Information",
@@ -922,5 +928,11 @@
       ],
       "permission_overwrites": []
     }
-  ]
+  ],
+  "community_features": {
+    "guild_description": null,
+    "rules_channel": "rules",
+    "public_updates_channel": "discord-updates",
+    "safety_alerts_channel": "system-events"
+  }
 }

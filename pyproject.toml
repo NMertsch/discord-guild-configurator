@@ -26,6 +26,9 @@ dev = [
     "ty>=0.0.18",
 ]
 
+[tool.ty.terminal]
+output-format = "concise"
+
 [tool.ty.rules]
 all = "error"
 

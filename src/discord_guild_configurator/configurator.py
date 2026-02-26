@@ -11,10 +11,12 @@ from discord.utils import get as discord_get
 
 from discord_guild_configurator.models import (
     Category,
+    CommunityFeatures,
     ForumChannel,
     GuildConfig,
     PermissionOverwrite,
     Role,
+    SystemChannel,
     TextChannel,
     VoiceChannel,
 )
@@ -31,21 +33,15 @@ class GuildConfigurator:
         for role_template in template.roles:
             await self.ensure_role(role_template)
 
-        logger.info("Configuring 'COMMUNITY' features")
-        await self.ensure_community_feature(
-            rules_channel_name=template.rules_channel_name,
-            updates_channel_name=template.updates_channel_name,
-        )
+        logger.info("Configuring system channel")
+        await self.ensure_system_channel(template.system_channel)
+
+        if template.community_features:
+            logger.info("Configuring 'COMMUNITY' features")
+            await self.ensure_community_feature(template.community_features)
 
         logger.info("Configuring categories and channels")
         await self.ensure_categories_and_channels(template.categories)
-
-        logger.info("Configuring system channels and events")
-        await self.ensure_system_channel_configuration(
-            system_channel_name=template.system_channel_name,
-            updates_channel_name=template.updates_channel_name,
-            rules_channel_name=template.rules_channel_name,
-        )
 
         logger.info("Configuring permissions")
         await self.ensure_category_and_channel_permissions(template.categories)
@@ -356,64 +352,30 @@ class GuildConfigurator:
                     logger.debug("Update topic of channel %s", channel_template.name)
                     await channel.edit(topic=expected_topic)
 
-    async def ensure_system_channel_configuration(
-        self,
-        *,
-        system_channel_name: str,
-        updates_channel_name: str,
-        rules_channel_name: str,
-    ) -> None:
+    async def ensure_system_channel(self, system_channel: SystemChannel) -> None:
         logger.info("Ensure system channel configuration")
         current_system_channel = self.guild.system_channel
-        if current_system_channel is None or current_system_channel.name != system_channel_name:
+        if current_system_channel is None or current_system_channel.name != system_channel.name:
             logger.debug("Update system channel")
-            new_system_channel = self.get_text_channel(system_channel_name)
+            new_system_channel = self.get_text_channel(system_channel.name)
             await self.guild.edit(system_channel=new_system_channel)
 
-        current_updates_channel = self.guild.public_updates_channel
-        if current_updates_channel is None or current_updates_channel.name != updates_channel_name:
-            logger.debug("Update public updates channel")
-            new_updates_channel = self.get_text_channel(updates_channel_name)
-            await self.guild.edit(public_updates_channel=new_updates_channel)
+        target_flags = discord.SystemChannelFlags(
+            join_notifications=system_channel.join_notifications,
+            join_notification_replies=system_channel.join_notification_replies,
+            guild_reminder_notifications=system_channel.guild_reminder_notifications,
+            premium_subscriptions=system_channel.premium_subscriptions,
+            role_subscription_purchase_notifications=system_channel.role_subscription_purchase_notifications,
+            role_subscription_purchase_notification_replies=system_channel.role_subscription_purchase_notification_replies,
+        )
+        if self.guild.system_channel_flags != target_flags:
+            logger.debug("Update system channel flags")
+            await self.guild.edit(system_channel_flags=target_flags)
 
-        rules_channel = self.guild.rules_channel
-        if rules_channel is None or rules_channel.name != rules_channel_name:
-            logger.debug("Update rules channel")
-            new_rules_channel = self.get_text_channel(rules_channel_name)
-            await self.guild.edit(rules_channel=new_rules_channel)
-
-        logger.debug("Ensure system channel flags")
-        if not self.guild.system_channel_flags.join_notifications:
-            logger.debug("Enable member join notifications to the system channel")
-            await self.guild.edit(
-                system_channel_flags=discord.SystemChannelFlags(join_notifications=True)
-            )
-        if self.guild.system_channel_flags.join_notification_replies:
-            logger.debug("Disable 'Wave to say Hi!' suggestion on member join events")
-            await self.guild.edit(
-                system_channel_flags=discord.SystemChannelFlags(join_notification_replies=False)
-            )
-        if self.guild.system_channel_flags.guild_reminder_notifications:
-            logger.debug("Disable server setup suggestions and reminders")
-            await self.guild.edit(
-                system_channel_flags=discord.SystemChannelFlags(guild_reminder_notifications=False)
-            )
-
-    async def ensure_community_feature(
-        self, *, rules_channel_name: str, updates_channel_name: str
-    ) -> None:
+    async def ensure_community_feature(self, community_features: CommunityFeatures) -> None:
         logger.info("Ensure 'COMMUNITY' feature configuration")
 
         logger.debug("Ensure rules and public updates channels")
-        rules_channel = discord_get(self.guild.text_channels, name=rules_channel_name)
-        if rules_channel is None:
-            await self.ensure_text_channel(category=None, name=rules_channel_name, position=0)
-            rules_channel = self.get_text_channel(rules_channel_name)
-        public_updates_channel = discord_get(self.guild.text_channels, name=updates_channel_name)
-        if public_updates_channel is None:
-            await self.ensure_text_channel(category=None, name=updates_channel_name, position=0)
-            public_updates_channel = self.get_text_channel(updates_channel_name)
-
         if self.guild.verification_level < VerificationLevel.medium:  # type: ignore[unsupported-operator]
             logger.debug("Raise verification level at medium")
             await self.guild.edit(verification_level=discord.VerificationLevel.medium)
@@ -425,7 +387,13 @@ class GuildConfigurator:
             logger.debug("Enable guild 'COMMUNITY' feature")
             await self.guild.edit(
                 community=True,
-                rules_channel=rules_channel,
-                public_updates_channel=public_updates_channel,
+                public_updates_channel=self.get_text_channel(
+                    community_features.public_updates_channel
+                ),
+                rules_channel=self.get_text_channel(community_features.rules_channel),
+                safety_alerts_channel=self.get_text_channel(
+                    community_features.safety_alerts_channel
+                ),
+                description=community_features.guild_description,
                 explicit_content_filter=discord.ContentFilter.all_members,
             )

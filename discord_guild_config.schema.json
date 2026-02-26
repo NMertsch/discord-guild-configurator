@@ -47,6 +47,42 @@
       "title": "Category",
       "type": "object"
     },
+    "CommunityFeatures": {
+      "additionalProperties": false,
+      "properties": {
+        "guild_description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Guild Description"
+        },
+        "rules_channel": {
+          "title": "Rules Channel",
+          "type": "string"
+        },
+        "public_updates_channel": {
+          "title": "Public Updates Channel",
+          "type": "string"
+        },
+        "safety_alerts_channel": {
+          "title": "Safety Alerts Channel",
+          "type": "string"
+        }
+      },
+      "required": [
+        "guild_description",
+        "rules_channel",
+        "public_updates_channel",
+        "safety_alerts_channel"
+      ],
+      "title": "CommunityFeatures",
+      "type": "object"
+    },
     "ForumChannel": {
       "additionalProperties": false,
       "properties": {
@@ -333,6 +369,50 @@
       "title": "Role",
       "type": "object"
     },
+    "SystemChannel": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "guild_reminder_notifications": {
+          "title": "Guild Reminder Notifications",
+          "type": "boolean"
+        },
+        "join_notification_replies": {
+          "title": "Join Notification Replies",
+          "type": "boolean"
+        },
+        "join_notifications": {
+          "title": "Join Notifications",
+          "type": "boolean"
+        },
+        "premium_subscriptions": {
+          "title": "Premium Subscriptions",
+          "type": "boolean"
+        },
+        "role_subscription_purchase_notification_replies": {
+          "title": "Role Subscription Purchase Notification Replies",
+          "type": "boolean"
+        },
+        "role_subscription_purchase_notifications": {
+          "title": "Role Subscription Purchase Notifications",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "guild_reminder_notifications",
+        "join_notification_replies",
+        "join_notifications",
+        "premium_subscriptions",
+        "role_subscription_purchase_notification_replies",
+        "role_subscription_purchase_notifications"
+      ],
+      "title": "SystemChannel",
+      "type": "object"
+    },
     "TextChannel": {
       "additionalProperties": false,
       "properties": {
@@ -409,17 +489,8 @@
       "title": "Roles",
       "type": "array"
     },
-    "rules_channel_name": {
-      "title": "Rules Channel Name",
-      "type": "string"
-    },
-    "system_channel_name": {
-      "title": "System Channel Name",
-      "type": "string"
-    },
-    "updates_channel_name": {
-      "title": "Updates Channel Name",
-      "type": "string"
+    "system_channel": {
+      "$ref": "#/$defs/SystemChannel"
     },
     "categories": {
       "items": {
@@ -427,14 +498,23 @@
       },
       "title": "Categories",
       "type": "array"
+    },
+    "community_features": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CommunityFeatures"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "required": [
     "roles",
-    "rules_channel_name",
-    "system_channel_name",
-    "updates_channel_name",
-    "categories"
+    "system_channel",
+    "categories",
+    "community_features"
   ],
   "title": "GuildConfig",
   "type": "object"

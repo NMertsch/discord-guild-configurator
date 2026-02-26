@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from discord_guild_configurator.models import (
     Category,
+    CommunityFeatures,
     ForumChannel,
     GuildConfig,
     PermissionOverwrite,
     Role,
+    SystemChannel,
     TextChannel,
     VoiceChannel,
 )
@@ -132,9 +134,21 @@ CONFIG = GuildConfig(
             ],
         ),
     ],
-    rules_channel_name="rules",
-    system_channel_name="system-events",
-    updates_channel_name="discord-updates",
+    system_channel=SystemChannel(
+        name="system-events",
+        guild_reminder_notifications=False,
+        join_notification_replies=False,
+        join_notifications=True,
+        premium_subscriptions=False,
+        role_subscription_purchase_notification_replies=False,
+        role_subscription_purchase_notifications=False,
+    ),
+    community_features=CommunityFeatures(
+        guild_description=None,
+        rules_channel="rules",
+        public_updates_channel="discord-updates",
+        safety_alerts_channel="system-events",
+    ),
     categories=[
         Category(
             name="Information",

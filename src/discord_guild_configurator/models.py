@@ -65,12 +65,28 @@ class Role(StrictBaseModel):
     permissions: list[Permission] = Field(default_factory=list)
 
 
+class CommunityFeatures(StrictBaseModel):
+    guild_description: str | None
+    rules_channel: str
+    public_updates_channel: str
+    safety_alerts_channel: str
+
+
+class SystemChannel(StrictBaseModel):
+    name: str
+    guild_reminder_notifications: bool
+    join_notification_replies: bool
+    join_notifications: bool
+    premium_subscriptions: bool
+    role_subscription_purchase_notification_replies: bool
+    role_subscription_purchase_notifications: bool
+
+
 class GuildConfig(StrictBaseModel):
     roles: list[Role]
-    rules_channel_name: str
-    system_channel_name: str
-    updates_channel_name: str
+    system_channel: SystemChannel
     categories: list[Category]
+    community_features: CommunityFeatures | None
 
     @model_validator(mode="after")
     def verify_system_channel_names(self) -> Self:
@@ -78,11 +94,15 @@ class GuildConfig(StrictBaseModel):
         for category in self.categories:
             channel_names.extend(channel.name for channel in category.channels)
 
-        required_channels = [
-            self.rules_channel_name,
-            self.system_channel_name,
-            self.updates_channel_name,
-        ]
+        required_channels = [self.system_channel.name]
+        if self.community_features:
+            required_channels.extend(
+                [
+                    self.community_features.rules_channel,
+                    self.community_features.public_updates_channel,
+                    self.community_features.safety_alerts_channel,
+                ]
+            )
         missing_channels = [
             channel for channel in required_channels if channel not in channel_names
         ]
