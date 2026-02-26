@@ -1,4 +1,7 @@
-from typing import Literal
+from typing import Annotated, Literal
+
+import discord
+import pydantic
 
 Permissions = Literal[
     "add_reactions",
@@ -58,53 +61,55 @@ Permissions = Literal[
     "view_creator_monetization_analytics",
     "view_guild_insights",
 ]
-VerificationLevel = Literal[
-    "none",
-    "low",
-    "medium",
-    "high",
-    "highest",
+VerificationLevel = Annotated[
+    discord.VerificationLevel,
+    pydantic.PlainValidator(
+        lambda value: discord.VerificationLevel[value] if isinstance(value, str) else value
+    ),
+    pydantic.PlainSerializer(lambda value: value.name),
+    pydantic.Field(
+        json_schema_extra={
+            "enum": [option.name for option in discord.VerificationLevel],
+            "type": "string",
+        },
+    ),
 ]
-NotificationLevel = Literal[
-    "all_messages",
-    "only_mentions",
+NotificationLevel = Annotated[
+    discord.NotificationLevel,
+    pydantic.PlainValidator(
+        lambda value: discord.NotificationLevel[value] if isinstance(value, str) else value
+    ),
+    pydantic.PlainSerializer(lambda value: value.name),
+    pydantic.Field(
+        json_schema_extra={
+            "enum": [option.name for option in discord.NotificationLevel],
+            "type": "string",
+        },
+    ),
 ]
-Locale = Literal[
-    "american_english",
-    "brazil_portuguese",
-    "british_english",
-    "bulgarian",
-    "chinese",
-    "croatian",
-    "czech",
-    "danish",
-    "dutch",
-    "finnish",
-    "french",
-    "german",
-    "greek",
-    "hindi",
-    "hungarian",
-    "indonesian",
-    "italian",
-    "japanese",
-    "korean",
-    "latin_american_spanish",
-    "lithuanian",
-    "norwegian",
-    "polish",
-    "romanian",
-    "russian",
-    "spain_spanish",
-    "swedish",
-    "taiwan_chinese",
-    "thai",
-    "turkish",
-    "ukrainian",
-    "vietnamese",
+Locale = Annotated[
+    discord.Locale,
+    pydantic.PlainValidator(
+        lambda value: discord.Locale[value] if isinstance(value, str) else value
+    ),
+    pydantic.PlainSerializer(lambda value: value.name),
+    pydantic.Field(
+        json_schema_extra={
+            "enum": [option.name for option in discord.Locale],
+            "type": "string",
+        },
+    ),
 ]
-ContentFilter = Literal[
-    "disabled",
-    "no_role",
-    "all_members",
+ContentFilter = Annotated[
+    discord.ContentFilter,
+    pydantic.PlainValidator(
+        lambda value: discord.ContentFilter[value] if isinstance(value, str) else value
+    ),
+    pydantic.PlainSerializer(lambda value: value.name),
+    pydantic.Field(
+        json_schema_extra={
+            "enum": [option.name for option in discord.ContentFilter],
+            "type": "string",
+        },
+    ),
 ]

@@ -4,6 +4,7 @@ import re
 import textwrap
 from typing import Annotated, Literal, Self
 
+import discord
 from pydantic import (
     AfterValidator,
     Field,
@@ -128,7 +129,7 @@ class GuildConfig(StrictBaseModel):
 
     @model_validator(mode="after")
     def verify_verification_level(self) -> Self:
-        if self.community_features and self.verification_level in ("none", "low"):
+        if self.community_features and self.verification_level < discord.VerificationLevel.medium:  # type: ignore[unsupported-operator]
             raise ValueError(
                 "The Community feature requires a verification level of at least medium"
             )

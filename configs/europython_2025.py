@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import discord
+
 from discord_guild_configurator.models import (
     Category,
     CommunityFeatures,
@@ -44,10 +46,10 @@ ROLES_REGISTERED = [
     ROLE_BEGINNERS_DAY,
 ]
 CONFIG = GuildConfig(
-    verification_level="medium",
-    default_notifications="only_mentions",
-    explicit_content_filter="all_members",
-    preferred_locale="american_english",
+    verification_level=discord.VerificationLevel.medium,
+    default_notifications=discord.NotificationLevel.only_mentions,
+    explicit_content_filter=discord.ContentFilter.all_members,
+    preferred_locale=discord.Locale.american_english,
     roles=[
         Role(
             name=ROLE_COC,

@@ -67,6 +67,7 @@ fixable = [
     "F841",  # unused variable
     "B007",  # unused loop variable
     "PIE790",  # unnecessary pass
+    "Q003",  # change single/double quotes
 ]
 
 [tool.ruff.lint.per-file-ignores]
