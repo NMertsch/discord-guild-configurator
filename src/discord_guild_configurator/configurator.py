@@ -29,6 +29,8 @@ class GuildConfigurator:
         self.guild: Final[discord.Guild] = guild
 
     async def apply_configuration(self, template: GuildConfig) -> None:
+        self._check_config_compatibility(template)
+
         logger.info("Configuring roles")
         for role_template in template.roles:
             await self.ensure_role(role_template)
@@ -51,6 +53,15 @@ class GuildConfigurator:
 
         logger.info("Configure channel default messages")
         await self.ensure_default_messages(template.categories)
+
+    def _check_config_compatibility(self, template: GuildConfig) -> None:
+        if (
+            "COMMUNITY" in self.guild.features
+            and template.verification_level < discord.VerificationLevel.medium  # type: ignore[unsupported-operator]
+        ):
+            raise ValueError(
+                "The Community feature requires a verification level of at least medium"
+            )
 
     def get_text_channel(self, name: str) -> discord.TextChannel:
         channel = discord_get(self.guild.text_channels, name=name)
