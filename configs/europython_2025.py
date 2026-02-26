@@ -44,6 +44,10 @@ ROLES_REGISTERED = [
     ROLE_BEGINNERS_DAY,
 ]
 CONFIG = GuildConfig(
+    verification_level="medium",
+    default_notifications="only_mentions",
+    explicit_content_filter="all_members",
+    preferred_locale="american_english",
     roles=[
         Role(
             name=ROLE_COC,

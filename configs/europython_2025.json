@@ -934,5 +934,9 @@
     "rules_channel": "rules",
     "public_updates_channel": "discord-updates",
     "safety_alerts_channel": "system-events"
-  }
+  },
+  "verification_level": "medium",
+  "default_notifications": "only_mentions",
+  "explicit_content_filter": "all_members",
+  "preferred_locale": "american_english"
 }

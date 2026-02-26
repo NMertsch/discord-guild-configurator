@@ -4,10 +4,20 @@ import re
 import textwrap
 from typing import Annotated, Literal, Self
 
-from pydantic import AfterValidator, Field, model_validator
+from pydantic import (
+    AfterValidator,
+    Field,
+    model_validator,
+)
 
 from discord_guild_configurator._utils import StrictBaseModel
-from discord_guild_configurator.generated_models import Permission
+from discord_guild_configurator.generated_models import (
+    ContentFilter,
+    Locale,
+    NotificationLevel,
+    Permissions,
+    VerificationLevel,
+)
 
 MultilineString = Annotated[
     str,
@@ -17,8 +27,8 @@ MultilineString = Annotated[
 
 class PermissionOverwrite(StrictBaseModel):
     roles: list[str]
-    allow: list[Permission] = Field(default_factory=list)
-    deny: list[Permission] = Field(default_factory=list)
+    allow: list[Permissions] = Field(default_factory=list)
+    deny: list[Permissions] = Field(default_factory=list)
 
 
 class ForumChannel(StrictBaseModel):
@@ -62,7 +72,7 @@ class Role(StrictBaseModel):
     color: str = Field(pattern=re.compile("^#[0-9A-F]{6}$"))
     hoist: bool = False
     mentionable: bool = False
-    permissions: list[Permission] = Field(default_factory=list)
+    permissions: list[Permissions] = Field(default_factory=list)
 
 
 class CommunityFeatures(StrictBaseModel):
@@ -87,6 +97,10 @@ class GuildConfig(StrictBaseModel):
     system_channel: SystemChannel
     categories: list[Category]
     community_features: CommunityFeatures | None
+    verification_level: VerificationLevel
+    default_notifications: NotificationLevel
+    explicit_content_filter: ContentFilter
+    preferred_locale: Locale
 
     @model_validator(mode="after")
     def verify_system_channel_names(self) -> Self:
@@ -110,6 +124,14 @@ class GuildConfig(StrictBaseModel):
         if missing_channels:
             raise ValueError(f"Missing system channels: {missing_channels}")
 
+        return self
+
+    @model_validator(mode="after")
+    def verify_verification_level(self) -> Self:
+        if self.community_features and self.verification_level in ("none", "low"):
+            raise ValueError(
+                "The Community feature requires a verification level of at least medium"
+            )
         return self
 
     @model_validator(mode="after")

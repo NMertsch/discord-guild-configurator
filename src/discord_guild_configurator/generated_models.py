@@ -1,6 +1,6 @@
 from typing import Literal
 
-Permission = Literal[
+Permissions = Literal[
     "add_reactions",
     "administrator",
     "attach_files",
@@ -57,4 +57,54 @@ Permission = Literal[
     "view_channel",
     "view_creator_monetization_analytics",
     "view_guild_insights",
+]
+VerificationLevel = Literal[
+    "none",
+    "low",
+    "medium",
+    "high",
+    "highest",
+]
+NotificationLevel = Literal[
+    "all_messages",
+    "only_mentions",
+]
+Locale = Literal[
+    "american_english",
+    "brazil_portuguese",
+    "british_english",
+    "bulgarian",
+    "chinese",
+    "croatian",
+    "czech",
+    "danish",
+    "dutch",
+    "finnish",
+    "french",
+    "german",
+    "greek",
+    "hindi",
+    "hungarian",
+    "indonesian",
+    "italian",
+    "japanese",
+    "korean",
+    "latin_american_spanish",
+    "lithuanian",
+    "norwegian",
+    "polish",
+    "romanian",
+    "russian",
+    "spain_spanish",
+    "swedish",
+    "taiwan_chinese",
+    "thai",
+    "turkish",
+    "ukrainian",
+    "vietnamese",
+]
+ContentFilter = Literal[
+    "disabled",
+    "no_role",
+    "all_members",
 ]
